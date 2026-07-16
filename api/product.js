@@ -1,6 +1,15 @@
 export default async function handler(req, res) {
 
     const slug = req.query.slug;
+        const userAgent = req.headers["user-agent"] || "";
+
+    const isBot =
+        /facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|Slackbot|Discordbot|TelegramBot/i.test(userAgent);
+
+    // If it's not a bot, don't serve the OG HTML
+    if (!isBot) {
+        return res.redirect(302, "/");
+    }
 
     try {
 
@@ -78,10 +87,6 @@ content="${product.short_description || ''}">
 <meta name="twitter:image"
 content="${product.image_url}">
 
-
-
-<meta http-equiv="refresh"
-content="0;url=${productUrl}">
 
 
 </head>
