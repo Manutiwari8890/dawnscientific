@@ -28,22 +28,22 @@ export default async function handler(req) {
 
     // 3. Construct the raw HTML metadata tags that WhatsApp requires
     const ogTags = `
-      <title>${product.title}</title>
-      <meta name="description" content="${product.description}" />
+      <title>${product.name}</title>
+      <meta name="description" content="${product.short_description}" />
       
       <!-- Open Graph / WhatsApp Tags -->
-      <meta property="og:title" content="${product.title}" />
-      <meta property="og:description" content="${product.description}" />
-      <meta property="og:image" content="${product.imageUrl}" />
+      <meta property="og:title" content="${product.name}" />
+      <meta property="og:description" content="${product.short_description}" />
+      <meta property="og:image" content="${product.image_url}" />
       <meta property="og:url" content="${url.href}" />
       <meta property="og:type" content="product" />
       <meta property="og:site_name" content="APC" />
       
       <!-- Twitter Card Tags -->
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="${product.title}" />
-      <meta name="twitter:description" content="${product.description}" />
-      <meta name="twitter:image" content="${product.imageUrl}" />
+      <meta name="twitter:title" content="${product.name}" />
+      <meta name="twitter:description" content="${product.short_description}" />
+      <meta name="twitter:image" content="${product.image_url}" />
     `;
 
     // 4. Inject the metadata into the top of the <head> tag string
