@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     // If it's not a bot, don't serve the OG HTML
     if (!isBot) {
-        return res.redirect(302, "/");
+        return NextResponse.next();
     }
 
     try {
