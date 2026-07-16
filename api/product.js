@@ -7,7 +7,8 @@ export default async function handler(req, res) {
         // Laravel API call
         const response = await fetch(
             `
-https://new.dawnscientific.com/public/api/products//${slug}`
+            
+https://new.dawnscientific.com/public/api/products/${slug}`
         );
 
 
