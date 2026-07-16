@@ -1,5 +1,11 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+    "rewrites": [
+      {
+        "source": "/product/:slug",
+        "destination": "/api/product?slug=:slug"
+      },
+      { "source": "/(.*)", "destination": "/index.html" }
+    ],
     "headers": [
     {
       "source": "/(.*).(js|css|woff2|png|jpg|webp)",

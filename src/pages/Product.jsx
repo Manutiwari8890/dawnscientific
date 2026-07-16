@@ -270,20 +270,26 @@ function Product({ onToggleCart }) {
     return (
         <>
             {data?.meta_title ?
-
                 <Helmet>
                     <title>{data?.meta_title || data?.name} </title>
-                    <meta
-                        name="description"
-                        content={data?.meta_description || `${data?.name} available now.`}
-                    />
-                    <meta
-                        name="keywords"
-                        content={data?.meta_keyword || data?.name.split(" ").join(", ")}
-                    />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content={data?.name} />
+                    <meta property="og:description" content={data?.short_description || data?.name} />
+                    <meta property="og:image" content={`${data?.image_url}`} />
+                    <meta property="og:url" content={`https://www.dawnscientific.com/product/${data?.slug}`} />
+                    <meta property="og:site_name" content="Lab Consumables, Chemicals & Equipment from Dawn Scientific" />
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:title" content={data?.name} />
+                    <meta name="twitter:description" content={data?.short_description || data?.name} />
+                    <meta name="twitter:image" content={data?.image_url} />
+                    <link rel="canonical" href={`https://www.dawnscientific.com/product/${data?.slug}`}/>
+                    <script type="application/ld+json">
+                        {JSON.stringify(schema)}
+                    </script>
                 </Helmet> :
                 <Helmet>
                     <title>{`${data?.name} | Dawn Scientific`} </title>
+                    <link rel="canonical" href={`https://www.dawnscientific.com/product/${data?.slug}`} />
                     <meta name="description" content={data?.short_description || `Buy ${data?.name} at best price`} />
                     <meta name="keywords" content={`${data?.name}, ${data?.sku}, Dawn Scientific`} />
                     <meta property="og:title" content={data?.name} />
@@ -296,6 +302,9 @@ function Product({ onToggleCart }) {
                     <meta name="twitter:description" content={data?.short_description || data?.name} />
                     <meta name="twitter:image" content={data?.image_url} />
                     <link rel="canonical" href={`https://dawnscientific.com/product/${data?.slug}`} />
+                    <script type="application/ld+json">
+                        {JSON.stringify(schema)}
+                    </script>
                 </Helmet>
             }
             <div className={`enquiry-modal modal ${popStatus ? 'active' : ''}`} id="demo-modal"
