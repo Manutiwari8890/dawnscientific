@@ -265,6 +265,26 @@ function Product({ onToggleCart }) {
         }
         setBnumber(value)
     }
+    
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: data?.name,
+        image: [
+            "https://example.com/images/iphone.jpg"
+        ],
+        description: data?.short_description || data?.name,
+        brand: {
+            "@type": "Brand",
+            name: data?.brands?.[0]?.name
+        },
+        offers: {
+            "@type": "Offer",
+            price: data?.discounted_price,
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock"
+        }
+    };
 
     console.log(data)
     return (
