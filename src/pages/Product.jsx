@@ -266,6 +266,7 @@ function Product({ onToggleCart }) {
         setBnumber(value)
     }
 
+    console.log(data)
     return (
         <>
             {data?.meta_title ?

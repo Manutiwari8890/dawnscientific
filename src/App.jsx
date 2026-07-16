@@ -11,7 +11,6 @@ import OfferPopUp from './componments/OfferPopUp';
 import EthylAlcohol from './pages/EthylAlcohol';
 import Brand from './pages/Brand';
 import Error from './pages/Error';
-//const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 import { useLoader } from './context/LoaderContext';
 import FallbackLoader from './componments/FallbackLoader.jsx';
 
