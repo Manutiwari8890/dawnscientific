@@ -4,10 +4,7 @@ export const config = {
 
 export default async function handler(req) {
   const url = new URL(req.url);
-  const pathParts = url.pathname.split('/');
-  
-  // URL: apc.com/product/product-slug -> pathParts will be ['', 'product', 'product-slug']
-  const productSlug = pathParts[2]; 
+  const productSlug = url.searchParams.get("slug");
 
   // Security Fallback: If no slug is found, just return the standard app HTML
   if (!productSlug) {
@@ -17,11 +14,11 @@ export default async function handler(req) {
   try {
     // 1. Fetch the product metadata from your external database/API using the slug
     // (Replace this URL with your actual database API endpoint)
-    const apiResponse = await fetch(`https://new.dawnscientific.com/public/api/products/{productSlug}`);
+    const apiResponse = await fetch(`https://new.dawnscientific.com/public/api/products/${productSlug}`);
     
     if (!apiResponse.ok) throw new Error('Product not found');
-    const product = await apiResponse.json();
-
+    const response = await apiResponse.json();
+    const product = response.data;
     // 2. Fetch the base static index.html built by React
     const htmlResponse = await fetch(`${url.origin}/index.html`);
     let htmlText = await htmlResponse.text();
