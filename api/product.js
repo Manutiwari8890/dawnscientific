@@ -5,7 +5,8 @@ export const config = {
 export default async function handler(req) {
   const url = new URL(req.url);
   const productSlug = url.searchParams.get("slug");
-
+  console.log("URL:", req.url);
+  console.log("UA:", req.headers.get("user-agent"));
   // Security Fallback: If no slug is found, just return the standard app HTML
   if (!productSlug) {
     return await fetch(`${url.origin}/index.html`);
