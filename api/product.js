@@ -36,9 +36,8 @@ export default async function handler(req) {
       <meta property="og:image:width" content="1200">
       <meta property="og:image:height" content="630">
       <meta property="og:logo" content="https://www.dawnscientific.com/assets/images/Website-logo-1.webp" />
-      <meta property="og:type" content="product">
       <meta property="og:locale" content="en_US">
-      <meta property="og:url" content="${url.href}" />
+      <meta property="og:url" content="https://www.dawnscientific.com/product/${product.slug}" />
       <meta property="og:type" content="product" />
       <meta property="og:site_name" content="Lab Consumables, Chemicals & Equipment from Dawn Scientific" />
       
@@ -50,6 +49,11 @@ export default async function handler(req) {
     `;
 
     // 4. Inject the metadata into the top of the <head> tag string
+    htmlText = htmlText.replace(
+      /<title>.*?<\/title>/,
+      `<title>${product.meta_title}</title>`
+    );
+
     htmlText = htmlText.replace('<head>', `<head>${ogTags}`);
 
     return new Response(htmlText, {
