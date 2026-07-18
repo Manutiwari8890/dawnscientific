@@ -35,6 +35,7 @@ export default async function handler(req) {
       <meta property="og:image" content="${product.image_url}" />
       <meta property="og:image:width" content="1200">
       <meta property="og:image:height" content="630">
+      <meta property="og:logo" content="https://www.dawnscientific.com/assets/images/Website-logo-1.webp" />
       <meta property="og:type" content="product">
       <meta property="og:locale" content="en_US">
       <meta property="og:url" content="${url.href}" />
