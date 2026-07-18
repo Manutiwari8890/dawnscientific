@@ -33,6 +33,10 @@ export default async function handler(req) {
       <meta property="og:title" content="${product.meta_title}" />
       <meta property="og:description" content="${product.meta_description}" />
       <meta property="og:image" content="${product.image_url}" />
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+      <meta property="og:type" content="product">
+      <meta property="og:locale" content="en_US">
       <meta property="og:url" content="${url.href}" />
       <meta property="og:type" content="product" />
       <meta property="og:site_name" content="Lab Consumables, Chemicals & Equipment from Dawn Scientific" />
@@ -48,7 +52,10 @@ export default async function handler(req) {
     htmlText = htmlText.replace('<head>', `<head>${ogTags}`);
 
     return new Response(htmlText, {
-      headers: { 'content-type': 'text/html; charset=utf-8' },
+headers: {
+    "Content-Type": "text/html; charset=utf-8",
+    "Cache-Control": "public, max-age=0, s-maxage=600"
+  }
     });
 
   } catch (error) {
